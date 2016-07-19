@@ -76,6 +76,14 @@ Example:
         selvalue:{
           type:String,
           value:''
+        },
+        seltext:{
+          type:String,
+          value:''
+        },
+        value:{
+          type:String,
+          value:''
         }
       },
       attached:function () {
@@ -92,7 +100,8 @@ Example:
         })
 
         $("#chselect2").on("change", function(e){
-          that.fire('onchange', {changed: true});
+          that.value=e.target.value;
+          that.fire('changed', {changed: true});
         })
 
       }
