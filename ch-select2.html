@@ -55,7 +55,7 @@ Example:
     </style>
 
 
-    <select id="chselect2" style="width: 100%;">
+    <select style="width: 100%;">
       <option></option>
     </select>
   </template>
@@ -88,7 +88,7 @@ Example:
       },
       attached:function () {
         var that=this;
-        $("#chselect2").select2({
+        $("select").select2({
           placeholder:this.placeholder,
 
         });
