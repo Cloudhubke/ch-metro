@@ -94,12 +94,12 @@ Example:
         });
 
         this.data.forEach(function (item) {
-          $("#chselect2").append($("<option></option>")
+          $("select").append($("<option></option>")
                   .attr("value", item[this.selvalue]?item[this.selvalue]:item)
                   .text(item[this.seltext]?item[this.seltext]:item));
         })
 
-        $("#chselect2").on("change", function(e){
+        $("select").on("change", function(e){
           that.value=e.target.value;
           that.fire('changed', {changed: true});
         })
