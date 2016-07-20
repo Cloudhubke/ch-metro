@@ -93,6 +93,9 @@ Example:
 
         });
 
+        $('#selconst')
+                .empty();
+
         this.data.forEach(function (item) {
           $("select").append($("<option></option>")
                   .attr("value", item[this.selvalue]?item[this.selvalue]:item)
