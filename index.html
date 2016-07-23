@@ -16,6 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script src="../webcomponentsjs/webcomponents-lite.js"></script>
   <link rel="import" href="../ch-metro/ch-select2.html">
+  <link rel="import" href="../ch-metro/ch-menubar.html">
 
 </head>
 <body unresolved>
@@ -23,6 +24,20 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
        match the folder name, add a src="&lt;main-component&gt;.html" attribute,
        where &lt;main-component&gt;.html" is a file that imports all of the
        components you want documented. -->
+  <ch-menubar scheme="pink">
+    <div id="right">
+      <a class="mdl-color-text--white"><span class="mif-log"></span>Sign up</a>
+    </div>
+    <div id="far-right">
+      <a class="dropdown-toggle fg-white"><span class="mif-enter"></span> Enter</a>
+      <div class="app-bar-drop-container bg-white fg-dark place-right"
+           data-role="dropdown" data-no-close="true">
+        <div class="padding20">
+
+        </div>
+      </div>
+    </div>
+  </ch-menubar>
   <ch-select2></ch-select2>
 
 </body>

@@ -9,7 +9,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="metromin.html">
 
 
 <!--
@@ -29,10 +28,13 @@ Example:
 @hero hero.svg
 -->
 
+
 <dom-module id="ch-select2">
-  <script src="../jquery/dist/jquery.min.js"></script>
+  <link rel="import" href="../ch-externallibraries/jquerylatest.html">
   <script src="../select2/dist/js/select2.min.js"></script>
+
   <template>
+
     <style>
 
       :host {
@@ -50,14 +52,14 @@ Example:
         position: absolute !important;
         width: 1px !important; }
 
-
-
     </style>
 
 
-    <select style="width: 100%;">
+    <select id="sel2" style="width: 100%;">
       <option></option>
     </select>
+
+
   </template>
 
   <script>
@@ -88,21 +90,25 @@ Example:
       },
       attached:function () {
         var that=this;
-        $("select").select2({
+        var node=this.$.sel2;
+        $(node).select2({
           placeholder:this.placeholder,
 
         });
 
-        $('#selconst')
+        $(node)
                 .empty();
+        $(node).append($("<option></option>")
+                .attr("value", " ")
+                .text(""));
 
         this.data.forEach(function (item) {
-          $("select").append($("<option></option>")
+          $(node).append($("<option></option>")
                   .attr("value", item[this.selvalue]?item[this.selvalue]:item)
                   .text(item[this.seltext]?item[this.seltext]:item));
         })
 
-        $("select").on("change", function(e){
+        $(node).on("change", function(e){
           that.value=e.target.value;
           that.fire('changed', {changed: true});
         })
@@ -111,5 +117,3 @@ Example:
     });
   </script>
 </dom-module>
-
-<style  is="custom-style" include="ch-metromin"></style>

@@ -1,0 +1,66 @@
+<link rel="import" href="../polymer/polymer.html">
+
+
+<link rel="import" href="../ch-externallibraries/jquerylatest.html">
+<link rel="import" href="../ch-externallibraries/metroui.html">
+
+<dom-module id="ch-menubar">
+
+    <template>
+
+        <style>
+
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+
+
+        </style>
+
+            <div>
+                <div class$="{{classes}}" >
+                    <ul class="app-bar-menu">
+                        <content select="#left"> </content>
+                    </ul>
+
+
+                    <div class="app-bar-element place-right">
+                        <content select="#far-right"> </content>
+                    </div>
+
+
+                    <div class="app-bar-element place-right">
+                        <content select="#right"> </content>
+                    </div>
+
+                </div>
+            </div>
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'ch-menubar',
+
+            properties: {
+                scheme:{
+                    type:String,
+                    value:''
+                },
+                classes:{
+                    type:String,
+                    computed:'_menubarclasses(scheme)'
+                }
+            },
+            attached:function () {
+
+
+            },
+            _menubarclasses: function (scheme) {
+                return 'app-bar' + ' '+ scheme;
+            }
+        });
+    </script>
+</dom-module>
