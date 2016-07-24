@@ -6,6 +6,7 @@
 <dom-module id="ch-menubar">
     <link rel="import" href="../ch-externallibraries/jquerylatest.html">
     <link rel="import" href="../ch-externallibraries/metroui.html">
+    <script src="../jquery-sticky/jquery.sticky.js"></script>
 
     <template>
 
@@ -19,11 +20,13 @@
 
         </style>
 
-            <div>
+            <div id="chmenu">
                 <div class$="{{classes}}" >
 
                     <ul class="app-bar-menu">
-                        <content select="#left"> </content>
+                        <ul class="app-bar-menu">
+                            <content select="#left"> </content>
+                        </ul>
                     </ul>
 
 
@@ -57,8 +60,8 @@
                 }
             },
             attached:function () {
-
-
+                var node = this.$.chmenu;
+                $(node).sticky({topSpacing:0});
             },
             _menubarclasses: function (scheme) {
                 return 'app-bar' + ' '+ scheme;
