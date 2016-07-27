@@ -1,0 +1,108 @@
+<link rel="import" href="../polymer/polymer.html">
+
+
+<dom-module id="ch-adminmenu">
+    <link rel="import" href="../ch-externallibraries/jquery-2.2.3.html">
+    <link rel="import" href="../ch-externallibraries/metroui.html">
+    <link rel="stylesheet" href="ch-menu.css">
+    <script src="../jquery-sticky/jquery.sticky.js"></script>
+    <template>
+
+        <style>
+
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+
+
+        </style>
+
+            <div id="chmenu">
+                <div class="topnav-menu">
+                    <div class$="app-bar app-menu fixed-top {{theme}}" data-role="appbar">
+                        <a class="app-bar-element">
+                            <span id="toggle-tiles-dropdown" class="mif-apps mif-2x"></span>
+                            <div class="app-bar-drop-container"
+                                 data-role="dropdown"
+                                 data-toggle-element="#toggle-tiles-dropdown"
+                                 data-no-close="false" style="width: 324px;">
+                                <div class="tile-container bg-white">
+                                    <content select="#apps"></content>
+                                </div>
+                            </div>
+                        </a>
+                        <div class="app-bar-divider"></div>
+
+                            <content select="#menuitems"></content>
+
+                            <content select="#iconmenu"></content>
+                    </div>
+                </div>
+            </div>
+
+        <div data-role="charm" data-position="right" id="themesettings">
+            <h1 class="text-light">Theme Settings</h1>
+
+            <div layout="row">
+                <div flex="50">
+                    <a style="cursor: pointer" (click)="changeTheme('cloudtheme')"><img src="themes/cloudtheme.png"><br>Cloud</a>
+                </div>
+                <div flex="50">
+                    <a style="cursor: pointer" (click)="changeTheme('darcula')"><img src="themes/darcula.png"><br>Darcula</a>
+                </div>
+            </div>
+            <div layout="row">
+                <div flex="50">
+                    <a style="cursor: pointer" (click)="changeTheme('navy')"><img src="themes/navy.png"><br>navy</a>
+                </div>
+                <div flex="50">
+                    <a style="cursor: pointer" (click)="changeTheme('red')"><img src="themes/red.png"><br>Red</a>
+                </div>
+            </div>
+            <div layout="row">
+                <div flex="50">
+                    <a style="cursor: pointer" (click)="changeTheme('green')"><img src="themes/green.png"><br>Green</a>
+                </div>
+
+            </div>
+        </div>
+
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'ch-adminmenu',
+
+            properties: {
+                theme:{
+                    type:String,
+                    value:'cloudtheme'
+                },
+                classes:{
+                    type:String,
+                    computed:'_menubarclasses(scheme)'
+                },
+                sticky:{
+                    type:Boolean,
+                    value:false,
+                    observer:'_stickychange'
+                }
+            },
+            attached:function () {
+
+            },
+            _stickychange:function () {
+                var node = this.$.chmenu;
+                if(this.sticky){
+                    $(node).sticky({topSpacing:0});
+                }
+            },
+            _menubarclasses: function (scheme) {
+                return 'app-bar' + ' '+ scheme;
+            }
+        });
+    </script>
+</dom-module>

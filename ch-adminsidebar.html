@@ -1,0 +1,55 @@
+<link rel="import" href="../polymer/polymer.html">
+
+
+<dom-module id="ch-adminsidebar">
+    <link rel="import" href="../ch-externallibraries/jquery-2.2.3.html">
+    <link rel="import" href="../ch-externallibraries/metroui.html">
+    <link rel="stylesheet" href="ch-menu.css">
+    <script src="../jquery-sticky/jquery.sticky.js"></script>
+    <template>
+
+        <style>
+
+            :host {
+                display: block;
+                box-sizing: border-box;
+            }
+
+
+        </style>
+
+            <div id="chmenu">
+                <div class="page-content">
+                    <div layout="row" style="height: 100%; width: 100%">
+                        <div class$="cell-sidebar {{sidetheme}}" style="height: 100%">
+                            <content select="#sidebar"></content>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+    </template>
+
+    <script>
+        Polymer({
+            is: 'ch-adminsidebar',
+
+            properties: {
+                sidetheme:{
+                    type:String,
+                    value:'cloudthemesidebar'
+                },
+                classes:{
+                    type:String,
+                    computed:'_menubarclasses(scheme)'
+                }
+            },
+            attached:function () {
+
+            },
+
+
+        });
+    </script>
+</dom-module>
